@@ -20,7 +20,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 
 @Entity
@@ -37,12 +38,14 @@ public class Orders {
 
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "Status")
+	@JdbcTypeCode(SqlTypes.NAMED_ENUM)
+	@Column(columnDefinition = "order_status")
 	public Status status;
 
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "payment_status")
+	@JdbcTypeCode(SqlTypes.NAMED_ENUM)
+	@Column(columnDefinition = "payment_status")
 	public PaymentStatus paymentStatus;
 
 	@Column(name = "created_at", updatable = false)
