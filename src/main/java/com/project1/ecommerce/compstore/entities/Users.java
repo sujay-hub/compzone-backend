@@ -23,7 +23,7 @@ public class Users {
 	@Column(name = "user_id")
 	public Integer userId;
 	
-	@Column(name = "UserName")
+	@Column(name = "username")
 	public String userName;
 	
 	@Column(name = "email", nullable = false, unique = true)
@@ -36,7 +36,7 @@ public class Users {
 	@Column(name = "Role")
 	public Role role;
 	
-	@Column(name = "CreatedAt", updatable = false)
+	@Column(name = "created_at", updatable = false)
 	public LocalDateTime createdAt;
 	
 	private boolean isPaid;
