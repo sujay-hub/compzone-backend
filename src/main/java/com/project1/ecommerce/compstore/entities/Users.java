@@ -12,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 
 @Entity
@@ -33,7 +35,8 @@ public class Users {
 	public String password;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "Role")
+	@JdbcTypeCode(SqlTypes.NAMED_ENUM)
+	@Column(columnDefinition = "user_role")
 	public Role role;
 	
 	@Column(name = "created_at", updatable = false)
