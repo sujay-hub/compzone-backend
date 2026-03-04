@@ -36,8 +36,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         String path = request.getRequestURI();
         
         if(
-        	path.equals("/login") || 
-        	path.equals("/register") ||
+        	path.startsWith("/login") || 
+        	path.startsWith("/register") ||
         	path.equals("/products") ||
         	path.equals("/categories") ||
         	path.equals("/pagination") ||
