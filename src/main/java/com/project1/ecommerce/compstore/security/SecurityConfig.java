@@ -39,7 +39,7 @@ public class SecurityConfig {
         		.cors(Customizer.withDefaults()) //  Enable CORS
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                		.requestMatchers("/login/**", "/register/**", "/products/**","/categories/**","/pagination","/css/**", "/js/**").permitAll()
+                		.requestMatchers("/login/**", "/register/**", "/products/**","/categories/**","/pagination/**","/css/**", "/js/**").permitAll()
                         .requestMatchers("/cart/**", "/place-order", "/admin/products/{productId}/stock").authenticated()
                 		.requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
