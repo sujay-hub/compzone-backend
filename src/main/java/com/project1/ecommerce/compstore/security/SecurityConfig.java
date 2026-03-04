@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
@@ -39,6 +40,7 @@ public class SecurityConfig {
         		.cors(Customizer.withDefaults()) //  Enable CORS
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                		.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 		.requestMatchers("/login/**", "/register/**", "/products/**","/categories/**","/pagination/**","/css/**", "/js/**").permitAll()
                         .requestMatchers("/cart/**", "/place-order", "/admin/products/{productId}/stock").authenticated()
                 		.requestMatchers("/admin/**").hasRole("ADMIN")
@@ -73,7 +75,7 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of("http://localhost:5173",
                 "https://comp-zone-app.vercel.app")); // frontend origin
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true); // Needed if using cookies or Authorization header
 
