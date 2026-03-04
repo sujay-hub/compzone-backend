@@ -14,7 +14,7 @@ public class GlobalCorsConfig {
 	            public void addCorsMappings(CorsRegistry registry) {
 	                registry.addMapping("/**")  // Allow all endpoints
 	                //("http://localhost:5173") Your frontend URL
-	                .allowedOrigins("https://comp-zone-app.vercel.app/")
+	                .allowedOrigins("https://comp-zone-app.vercel.app")
 	                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "/**")
 	                        .allowedHeaders("*")
 	                        .allowCredentials(true); // Important for cookies and tokens
