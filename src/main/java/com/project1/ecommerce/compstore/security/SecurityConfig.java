@@ -44,7 +44,7 @@ public class SecurityConfig {
                 		.requestMatchers("/login/**", "/register/**", "/products/**","/categories/**","/pagination/**","/css/**", "/js/**").permitAll()
                         .requestMatchers("/cart/**", "/place-order", "/admin/products/{productId}/stock").authenticated()
                 		.requestMatchers("/admin/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authProvider())
